@@ -1,6 +1,5 @@
 ﻿using CaWorkshop.Domain.Entities;
 using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace CaWorkshop.Domain.Entities
 {
