@@ -7,6 +7,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace CaWorkshop.Infrastructure.Persistence
@@ -17,6 +18,14 @@ namespace CaWorkshop.Infrastructure.Persistence
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfigurationsFromAssembly(
+                Assembly.GetExecutingAssembly());
+
+            base.OnModelCreating(builder);
         }
 
         public DbSet<TodoItem> TodoItems { get; set; }
