@@ -15,6 +15,8 @@ namespace CaWorkshop.Application.UnitTests.Common.Mapping
             _mapper = fixture.Mapper;
         }
 
+
+        // self test
         [Fact]
         public void ShouldHaveValidConfiguration()
         {

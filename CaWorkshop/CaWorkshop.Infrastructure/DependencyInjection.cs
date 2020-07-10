@@ -21,6 +21,8 @@ namespace CaWorkshop.Infrastructure
             services.AddScoped<IApplicationDbContext>(provider =>
                 provider.GetService<ApplicationDbContext>());
 
+            services.AddScoped<IIdentityService, IdentityService>();
+
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 

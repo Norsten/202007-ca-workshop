@@ -4,11 +4,13 @@ using CaWorkshop.Application.TodoItems.Commands.UpdateTodoItem;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CaWorkshop.WebUI.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
+    [Route("api/[controller]")]
     public class TodoItemsController : ControllerBase
     {
         private readonly IMediator _mediator;
