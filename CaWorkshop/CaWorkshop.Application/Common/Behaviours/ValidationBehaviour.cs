@@ -42,6 +42,8 @@ namespace CaWorkshop.Application.Common.Behaviours
             }
 
             return await next();
+
+            // More logic here
         }
     }
 }
