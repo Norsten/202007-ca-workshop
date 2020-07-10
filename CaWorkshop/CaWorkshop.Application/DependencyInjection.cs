@@ -20,6 +20,12 @@ namespace CaWorkshop.Application
 
             services.AddTransient(typeof(IPipelineBehavior<,>),
                 typeof(ValidationBehavior<,>));
+            
+            services.AddTransient(typeof(IPipelineBehavior<,>),
+                typeof(LoggingBehaviour<>));
+
+            services.AddTransient(typeof(IPipelineBehavior<,>),
+                typeof(PerformanceBehaviour<,>));
 
             //services.AddAllRequestValidators();
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());

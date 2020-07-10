@@ -11,6 +11,8 @@ namespace CaWorkshop.Application.Common.Interfaces
             string userName,
             string password);
 
+        Task<bool> UserIsInRole(string userId, string role);
+
         Task<Result> DeleteUserAsync(string userId);
     }
 }

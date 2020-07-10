@@ -32,24 +32,21 @@ namespace CaWorkshop.Infrastructure.Persistence
         public DbSet<TodoList> TodoLists { get; set; }
 
         public override Task<int> SaveChangesAsync(
-            CancellationToken cancellationToken = new CancellationToken())
+           CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
             {
-                switch (entry.State)
+                if (entry.State == EntityState.Added)
                 {
-                    case EntityState.Added:
-                        entry.Entity.CreatedBy
-                            = _currentUserService.UserId;
-                        entry.Entity.CreatedUtc
-                            = DateTime.UtcNow;
-                        break;
-                    case EntityState.Modified:
-                        entry.Entity.LastModifiedBy
-                            = _currentUserService.UserId;
-                        entry.Entity.LastModifiedUtc
-                            = DateTime.UtcNow;
-                        break;
+                    entry.Entity.CreatedBy = _currentUserService.UserId;
+                    entry.Entity.CreatedUtc = DateTime.UtcNow;
+                }
+
+                if (entry.State == EntityState.Added ||
+                    entry.State == EntityState.Modified)
+                {
+                    entry.Entity.LastModifiedBy = _currentUserService.UserId;
+                    entry.Entity.LastModifiedUtc = DateTime.UtcNow;
                 }
             }
 
