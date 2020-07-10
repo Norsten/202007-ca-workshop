@@ -27,7 +27,7 @@ namespace CaWorkshop.Application.Common.Behaviours
         {
             var requestName = typeof(TRequest).Name;
             var userId = _currentUserService.UserId ?? string.Empty;
-            string userName = string.Empty;
+            string userName = "Anonymous";
 
             if (!string.IsNullOrEmpty(userId))
             {

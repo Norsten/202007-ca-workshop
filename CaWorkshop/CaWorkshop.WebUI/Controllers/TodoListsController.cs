@@ -16,6 +16,7 @@ namespace CaWorkshop.WebUI.Controllers
     public class TodoListsController : ApiController
     {
         // GET: api/TodoLists
+        //[AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<TodosVm>> GetTodoLists()
         {

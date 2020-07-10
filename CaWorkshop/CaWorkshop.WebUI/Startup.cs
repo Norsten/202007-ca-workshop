@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using System.Linq;
@@ -62,6 +63,8 @@ namespace CaWorkshop.WebUI
 
                 configure.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
             });
+
+            services.AddLogging(builder => builder.AddSeq());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -86,8 +89,10 @@ namespace CaWorkshop.WebUI
                 app.UseSpaStaticFiles();
             }
 
-            app.UseOpenApi();
-            app.UseSwaggerUi3();
+            app.UseSwaggerUi3(settings =>
+            {
+                settings.DocumentPath = "/api/specification.json";
+            });
 
             app.UseRouting();
 

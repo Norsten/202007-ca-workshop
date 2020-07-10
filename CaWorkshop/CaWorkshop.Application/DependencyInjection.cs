@@ -16,18 +16,15 @@ namespace CaWorkshop.Application
             IConfiguration configuration)
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddTransient(typeof(IPipelineBehavior<,>),
                 typeof(ValidationBehavior<,>));
             
             services.AddTransient(typeof(IPipelineBehavior<,>),
-                typeof(LoggingBehaviour<>));
-
-            services.AddTransient(typeof(IPipelineBehavior<,>),
                 typeof(PerformanceBehaviour<,>));
 
-            //services.AddAllRequestValidators();
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             return services;

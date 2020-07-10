@@ -6,7 +6,7 @@ import {
   TodoListDto, TodoItemDto, PriorityLevelDto,
   CreateTodoListCommand, UpdateTodoListCommand,
   CreateTodoItemCommand, UpdateTodoItemCommand
-} from '../services/ca-workshop-api.service';
+} from '../ca-workshop-api.service';
 
 @Component({
   selector: 'app-todo-component',
