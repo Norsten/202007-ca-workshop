@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CaWorkshop.Application.TodoLists.Queries.GetTodoLists;
 using CaWorkshop.Infrastructure.Persistence;
+using Microsoft.AspNetCore.Http;
 using Shouldly;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,16 +9,16 @@ using Xunit;
 
 namespace CaWorkshop.Application.UnitTests.TodoLists.Queries.GetTodoLists
 {
-    [Collection("QueryTests")]
+    [Collection(nameof(QueryCollection))]
     public class GetTodoListsQueryTests
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
-        public GetTodoListsQueryTests(TestBase testBase)
+        public GetTodoListsQueryTests(TestFixture fixture)
         {
-            _context = testBase.Context;
-            _mapper = testBase.Mapper;
+            _context = fixture.Context;
+            _mapper = fixture.Mapper;
         }
 
         [Fact]

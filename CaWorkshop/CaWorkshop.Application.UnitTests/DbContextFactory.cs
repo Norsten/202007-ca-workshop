@@ -11,7 +11,7 @@ namespace CaWorkshop.Application.UnitTests
         public static ApplicationDbContext Create()
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(Guid.NewGuid().ToString())
+                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
 
             var operationalStoreOptions = Options.Create(
